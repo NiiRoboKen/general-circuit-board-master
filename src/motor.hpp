@@ -1,1 +1,1 @@
-#pragma onece
+#pragma once
