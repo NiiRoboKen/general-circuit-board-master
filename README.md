@@ -34,3 +34,64 @@ CAN通信ででf303k8の汎用基盤に命令する通信プロトコルを書�
 ## DATA
 ### 概要
 - データの内容は`Command`に依る
+
+#### STOP
+```
+
+```
+#### RESET
+```
+
+```
+#### PING
+```
+
+```
+#### PING
+```
+
+```
+#### PONG
+```
+
+```
+#### SET CONFIG
+```
+
+```
+#### SET PID GAIN (ANGLE)
+```
+
+```
+#### SET PID GAIN (RPM)
+```
+
+```
+#### SET ANGLE
+```
+
+```
+#### SET RPM
+```
+
+```
+#### SET DUTY
+```
+
+```
+#### REQUEST GET ANGLE 
+```
+
+```
+#### REQUEST GET RPM
+```
+
+```
+#### RETURN ANGLE
+```
+
+```
+#### RETURN RPM
+```
+
+```
