@@ -58,7 +58,6 @@ class MotorController {
 
 Motor *-- MotorController
 class Motor{
-    <<InterFace>>
     # int id
     # MotorController& controller
     + cw(speed)
@@ -66,43 +65,8 @@ class Motor{
 }
 Servo *-- ServoController
 class Servo{
-    <<InterFace>>
     # int id
     # ServoController& controller
     + setAngle()
-}
-
-GCBMotor *-- GeneralCircuitBoardsController
-GCBMotor --|> Motor
-class GCBMotor {
-    - int id
-    - GeneralCircuitBoradsController& controller
-    + cw(speed)
-    + ccw(speed)
-}
-GCBServo *-- GeneralCircuitBoardsController
-GCBServo --|> Servo
-class GCBServo {
-    - int id
-    - GeneralCircuitBoardsController& controller
-    + setAngle(angle)
-}
-
-RoboMasMotor *-- RoboMasController
-RoboMasMotor *-- RoboMasSpeedController
-RoboMasMotor --|> Motor
-class RoboMasMotor{
-    - int id
-    - RoboMasController& controller
-    - RoboMasSpeedController& controller
-    + cw(speed)
-    + ccw(speed)
-}
-RoboMasServo *-- RoboMasServoController
-RoboMasServo --> Servo
-class RoboMasServo {
-    - int id
-    - RoboMAsServoController& controller
-    + setAngle(angle)
 }
 ```
