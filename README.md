@@ -5,12 +5,17 @@ CAN通信ででf303k8の汎用基盤に命令する通信プロトコルを書�
 ## ID
 ### 特徴
 ```
-| Command (13bit) | Sender id (8bit) | Receiver id (8bit) |
+| Command (11bit) | Sender id (8bit) | Receiver id (8bit) | Motor number (2bit) |
 ```
 - 拡張ID(`29bit`)で送信
 - `Command`には`13bit`の命令が入る
 - `Sender id`には`8bit`で送り元のIDが入る
-- `receiver id`には`8bit`で送り先のIDが入る
+- `Receiver id`には`8bit`で送り先のIDが入る
+- `Motor number`には基盤のどちらの出力を扱うかを指定
+    - `00`: 指定なし(STMからESPへの送信の場合)
+    - `01`: 出力1番
+    - `10`: 出力2番
+    - `11`: 両方指定
 
 ### Command
 
@@ -37,61 +42,57 @@ CAN通信ででf303k8の汎用基盤に命令する通信プロトコルを書�
 
 #### STOP
 ```
-
+||
 ```
 #### RESET
 ```
-
+||
 ```
 #### PING
 ```
-
-```
-#### PING
-```
-
+||
 ```
 #### PONG
 ```
-
+||
 ```
 #### SET CONFIG
 ```
-
+| CONTROL CONFIG | SELECT SWITCH | SWITCH CONFIG | 
 ```
 #### SET PID GAIN (ANGLE)
 ```
-
+| P GAIN | I GAIN | D GAIN |
 ```
 #### SET PID GAIN (RPM)
 ```
-
+| P GAIN | I GAIN | D GAIN |
 ```
 #### SET ANGLE
 ```
-
+| is CW | VALUE |
 ```
 #### SET RPM
 ```
-
+| is CW | VALUE |
 ```
 #### SET DUTY
 ```
-
+| is CW | DUTY |
 ```
 #### REQUEST GET ANGLE 
 ```
-
+||
 ```
 #### REQUEST GET RPM
 ```
-
+||
 ```
 #### RETURN ANGLE
 ```
-
+| is CW | VALUE |
 ```
 #### RETURN RPM
 ```
-
+| is CW | VALUE |
 ```
