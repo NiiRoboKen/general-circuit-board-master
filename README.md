@@ -63,24 +63,33 @@ CAN通信ででf303k8の汎用基盤に命令する通信プロトコルを書�
 
 #### SET PID GAIN (ANGLE)
 ```
-| P GAIN | I GAIN | D GAIN |
+| P GAIN (2byte) | I GAIN (2byte) | D GAIN (4byte) |
 ```
+- `P GAIN`、`I GAN` には自然数を入れる
+- `D GAIN`には小数点第三位までの数値を1000倍した値を入れる
 #### SET PID GAIN (RPM)
 ```
-| P GAIN | I GAIN | D GAIN |
+| P GAIN (2byte) | I GAIN (2byte) | D GAIN (4byte) |
 ```
+- `SET PID GAIN (ANGLE)`と同様
 #### SET ANGLE
 ```
-| is CW | VALUE |
+| is CW (1byte) | VALUE (2byte) |
 ```
+- `is CW`には`CW`なら`1`、`CCW`なら`0`を入れる
+- `VALUE`には単位が°の角度を入れる。（正の値、自然数）
 #### SET RPM
 ```
-| is CW | VALUE |
+| is CW (1byte) | VALUE (2byte) |
 ```
+- `is CW`には`CW`なら`1`、`CCW`なら`0`を入れる
+- `VALUE`にはRPMを入れる(自然数)
 #### SET DUTY
 ```
-| is CW | DUTY |
+| is CW (1byte) | DUTY (1byte) |
 ```
+- `is CW`には`CW`なら`1`、`CCW`なら`0`を入れる
+- `DUTY`には`0`から`100`までの値を入れる(自然数)
 #### REQUEST GET ANGLE 
 ```
 ||
@@ -91,9 +100,11 @@ CAN通信ででf303k8の汎用基盤に命令する通信プロトコルを書�
 ```
 #### RETURN ANGLE
 ```
-| is CW | VALUE |
+| is CW (1byte) | VALUE (2byte) |
 ```
+- `SET ANGLE`と同様
 #### RETURN RPM
 ```
-| is CW | VALUE |
+| is CW (1byte) | VALUE (2byte) |
 ```
+- `SET RPM`と同様
