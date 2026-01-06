@@ -25,6 +25,7 @@ CAN通信ででf303k8の汎用基盤に命令する通信プロトコルを書�
 | RESET                | 0x0001          | 全ての設定をリセット         |
 | PING                 | 0x0002          | 疎通確認                  |
 | PONG                 | 0x0003          | 疎通確認の返事             |
+| ERROR                | 0x0004          | エラー通知                 |
 | SET CONFIG           | 0x0010          | 基盤の設定                |
 | SET PID GAIN (ANGLE) | 0x0011          | 角度PIDのゲイン設定        |
 | SET PID GAIN (RPM)   | 0x0012          | 速度PIDのゲイン設定        |
