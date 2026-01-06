@@ -60,6 +60,19 @@ CAN通信ででf303k8の汎用基盤に命令する通信プロトコルを書�
 ```
 | CONTROL CONFIG (1byte) | SELECT SWITCH (1byte) | SWITCH CONFIG (1byte) | 
 ```
+##### CONTROL CONFIG (1byte) 
+- angle_pid `0x01`
+- speed_pid `0x02`
+- duty_control `0x03`
+
+##### SELECT SWITCH (1byte)
+- On `0x00`
+- Off `0x01`
+
+##### SWITCH CONFIG (1byte)
+- disable-cw　`0x01`
+- disable-ccw　`0x02`
+- reset-current-value `0x05`
 
 #### SET PID GAIN (ANGLE)
 ```
