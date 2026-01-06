@@ -57,6 +57,10 @@ CAN通信ででf303k8の汎用基盤に命令する通信プロトコルを書�
 ```
 ||
 ```
+#### ERROR
+```
+||
+```
 #### SET CONFIG
 ```
 | CONTROL CONFIG (1byte) | SELECT SWITCH (1byte) | SWITCH CONFIG (1byte) | 
