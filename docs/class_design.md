@@ -69,6 +69,10 @@ CanDriver --o GCBPIDServo
 
 ## 説明
 
+### CANドライバクラス(CanDriver)
+
+CANによる通信機能を提供します。このクラスは`esp-can`ライブラリにより提供されます。
+
 ### 汎用基板モータクラス(GCBMotor)
 
 #### GCBMotor-機能
