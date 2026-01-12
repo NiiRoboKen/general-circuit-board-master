@@ -77,13 +77,13 @@ CanDriver --o GCBPIDServo
 
 #### GCBMotor-継承関係
 
-DCモータをdutyで制御するのでMotorクラスを継承します。
+DCモータをdutyで制御するので`Motor`クラスを継承します。
 
-汎用基板を使用するのでGCBnodeクラスを継承します。
+汎用基板を使用するので`GCBnode`クラスを継承します。
 
 #### GCBMotor-集約/コンポジット関係
 
-汎用基板とのCAN通信のためCanDriverクラスの参照を持ちます。
+汎用基板とのCAN通信のため`CanDriver`クラスの参照を持ちます。
 
 ### 汎用基板PID制御モータクラス(GCBPIDMotor)
 
@@ -93,13 +93,13 @@ DCモータをdutyで制御するのでMotorクラスを継承します。
 
 #### GCBPIDMotor-継承関係
 
-DCモータを速度制御しフィードバックを受け取るためEncordableMotorクラスを継承します。
+DCモータを速度制御しフィードバックを受け取るため`EncordableMotor`クラスを継承します。
 
-汎用基板を使用するのでGCBnodeクラスを継承します。
+汎用基板を使用するので`GCBnode`クラスを継承します。
 
 #### GCBPIDMotor-集約/コンポジット関係
 
-汎用基板とのCAN通信のためのCanDriverクラスの参照を持ちます。
+汎用基板とのCAN通信のための`CanDriver`クラスの参照を持ちます。
 
 PID制御のためのゲインを持ちます。
 
@@ -111,13 +111,13 @@ PID制御のためのゲインを持ちます。
 
 #### GCBPIDServo-継承関係
 
-DCモータを角度制御しフィードバックを受け取るためEncordableServoクラスを継承します。
+DCモータを角度制御しフィードバックを受け取るため`EncordableServo`クラスを継承します。
 
-汎用基板を使用するのでGCBnodeクラスを継承します。
+汎用基板を使用するので`GCBnode`クラスを継承します。
 
 #### GCBPIDServo-集約/コンポジット関係
 
-汎用基板とのCAN通信のためのCanDriverクラスの参照を持ちます。
+汎用基板とのCAN通信のための`CanDriver`クラスの参照を持ちます。
 
 PID制御のためのゲインを持ちます。
 
