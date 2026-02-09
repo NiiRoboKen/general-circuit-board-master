@@ -5,16 +5,6 @@
 ```mermaid
 classDiagram
 
-class GCBNode {
-    #int id
-    #CanDriver& can_driver
-    +ping()
-    +reset()
-    +stop()
-}
-
-class CanDriver
-
 class GCBRawMotor {
     -int id
     -CanDriver& can_driver
@@ -26,6 +16,28 @@ class GCBRawMotor {
     +run(duty)
 }
 
+class GCBNode {
+    #int id
+    #CanDriver& can_driver
+    +ping()
+    +reset()
+    +stop()
+}
+
+class RawMotor {
+    <<Interface>>
+    +cw(duty)
+    +ccw(duty)
+    +run(duty)
+}
+
+GCBRawMotor --|> GCBNode
+GCBRawMotor --o CanDriver
+GCBRawMotor --|> RawMotor
+```
+
+```mermaid
+classDiagram
 class GCBSpeedControllableMotor {
     -int id
     -CanDriver& can_driver
@@ -33,7 +45,35 @@ class GCBSpeedControllableMotor {
     +reset()
     +stop()
     +setRPM(rpm)
+    +getRPM()
 }
+
+class GCBNode {
+    #int id
+    #CanDriver& can_driver
+    +ping()
+    +reset()
+    +stop()
+}
+
+class SpeedControllableMotor {
+    <<Interface>>
+    +setRPM(rpm)
+}
+
+class RPMEncoder {
+    <<Interface>>
+    +getRPM()
+}
+
+GCBSpeedControllableMotor --|> GCBNode
+GCBSpeedControllableMotor --o CanDriver
+GCBSpeedControllableMotor --|> SpeedControllableMotor
+GCBSpeedControllableMotor --|> RPMEncoder
+```
+
+```mermaid
+classDiagram
 
 class GCBServo {
     -int id
@@ -44,30 +84,15 @@ class GCBServo {
     +reset()
     +stop()
     +setAngle(degree)
-}
-
-class GCBRPMEncoder {
-    -int id
-    -CanDriver& can_driver
-    +getRPM()
-}
-
-class GCBAngleEncoder {
-    -int id
-    -CanDriver& can_driver
     +getAngle()
 }
 
-class RawMotor {
-    <<Interface>>
-    +cw(duty)
-    +ccw(duty)
-    +run(duty)
-}
-
-class SpeedControllableMotor {
-    <<Interface>>
-    +setRPM(rpm)
+class GCBNode {
+    #int id
+    #CanDriver& can_driver
+    +ping()
+    +reset()
+    +stop()
 }
 
 class Servo {
@@ -75,6 +100,35 @@ class Servo {
     #MAX_DEGREE
     #MIN_DEGREE
     +setAngle()
+}
+
+class AngleEncoder {
+    <<Interface>>
+    +getAngle()
+}
+
+GCBServo --|> GCBNode
+GCBServo --o CanDriver
+GCBServo --|> Servo
+GCBServo --|> AngleEncoder
+```
+
+```mermaid
+classDiagram
+
+class GCBEncoder {
+    -int id
+    -CanDriver& can_driver
+    +getRPM()
+    +getAngle()
+}
+
+class GCBNode {
+    #int id
+    #CanDriver& can_driver
+    +ping()
+    +reset()
+    +stop()
 }
 
 class RPMEncoder {
@@ -87,22 +141,10 @@ class AngleEncoder {
     +getAngle()
 }
 
-GCBRawMotor --|> GCBNode
-GCBRawMotor --o CanDriver
-GCBRawMotor --|> RawMotor
-GCBSpeedControllableMotor --|> GCBNode
-GCBSpeedControllableMotor --o CanDriver
-GCBSpeedControllableMotor --|> SpeedControllableMotor
-GCBServo --|> GCBNode
-GCBServo --o CanDriver
-GCBServo --|> Servo
-GCBRPMEncoder --|> GCBNode
-GCBRPMEncoder --o CanDriver
-GCBRPMEncoder --|> RPMEncoder
-GCBAngleEncoder --|> GCBNode
-GCBAngleEncoder --o CanDriver
-GCBAngleEncoder --|> AngleEncoder
-
+GCBEncoder --|> GCBNode
+GCBEncoder --o CanDriver
+GCBEncoder --|> RPMEncoder
+GCBEncoder --|> AngleEncoder
 ```
 
 ## Explain
@@ -119,14 +161,14 @@ GCBAngleEncoder --|> AngleEncoder
 
 汎用基板を用いモータを速度制御するクラス。
 
+回転速度を取得可能。
+
 ### GCBServo
 
 汎用基板を用いモータを角度制御するクラス。
 
-### GCBRPMEncoder
+角度を取得可能。
 
-汎用基板から回転速度(rpm)を取得するクラス。
+### GCBEncoder
 
-### GCBAngleEncoder
-
-汎用基板から角度を取得するクラス。
+汎用基板から回転速度(rpm)及び角度を取得するクラス。
